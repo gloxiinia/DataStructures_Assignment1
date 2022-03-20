@@ -2,6 +2,7 @@
 This is the repository containing the code for the Data Structures Individual Assignment 1
 
 Theory Questions for reference:
+
 Identify the complexity of each operation (the Big-Oh) – 10 POINTS
 Consider the situation when the array is not full and already full
 1.	Insert a new item at the beginning of the array
@@ -12,7 +13,9 @@ Consider the situation when the array is not full and already full
 
 File Details:
 1. arrayListType.h
+
 The List ADT template provided from the book, I've added some additional functions to make it work with the applications
+
 The additions are as follows:
 
 increaseSize(const elemType& increaseBy);
@@ -32,13 +35,17 @@ removeContact(string name);
 
 
 2. Contact.h
+
 The header file containing the Contact class
 
 3. main.cpp
+
 The cpp file containing the main program
 
 4. theoryFullList.cpp
+
 The cpp file containing the answers to the theory questions if the list is full. I created example code to help visualize using the arrayListType template.
 
 5. theoryNotFull.cpp
+
 The cpp file containing the answers to the theory questions if the list is *not* full. I created example code to help visualize using the arrayListType template.
