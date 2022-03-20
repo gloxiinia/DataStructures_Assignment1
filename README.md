@@ -4,6 +4,7 @@ This is the repository containing the code for the Data Structures Individual As
 Theory Questions for reference:
 
 Identify the complexity of each operation (the Big-Oh) – 10 POINTS
+
 Consider the situation when the array is not full and already full
 1.	Insert a new item at the beginning of the array
 2.	Insert a new item at the end of the array
