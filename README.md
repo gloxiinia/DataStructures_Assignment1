@@ -40,7 +40,7 @@ The header file containing the Contact class
 
 3. main.cpp
 
-The cpp file containing the main program
+The cpp file containing the main program for the Contact Book Application
 
 4. theoryFullList.cpp
 
