@@ -7,6 +7,7 @@
 #ifndef _ARRAYLIST_TYPE_H_
 #define _ARRAYLIST_TYPE_H_
 #include <cassert>
+#include <string>
 using namespace std;
 template <class elemType>
 class arrayListType
@@ -39,6 +40,27 @@ public:
         //Postcondition: Returns true if list[location]
         // is the same as the item; otherwise,
         // returns false.
+    
+    //ADDED FUNCTION TO INCREASE SIZE
+    void increaseSize(const elemType& increaseBy);
+        //increase a list maxSize when full
+
+    //ADDED FUNCTION TO PRINT ONE CONTACT
+    void printContact(int loc) const;
+        //prints one specific contact
+
+    //ADDED FUNCTION TO PRINT ALL CONTACTS IN A LIST
+    void printAll() const;
+        //prints all the contacts in a list
+
+    //ADDED FUNCTION TO SEARCH FOR ONE CONTACT
+    int contactSearch(string name) const;
+        //searches for a specific contact name
+
+    //ADDED FUNCTION TO REMOVE A CONTACT
+    void removeContact(string name);
+        //removes the contact with the same name attribute in the list if found
+
     void insertAt(int location, const elemType& insertItem);
         //Function to insert an item in the list at the
         //position specified by location. The item to be inserted
@@ -95,10 +117,10 @@ public:
         //Postcondition: If removeItem is found in the list,
         // it is removed from the list and length is
         // decremented by one.
-    arrayListType(int size = 100);
+    arrayListType(int size = 200);
         //constructor
         //Creates an array of the size specified by the
-        //parameter size. The default array size is 100.
+        //parameter size. The default array size is 200.
         //Postcondition: The list points to the array, length = 0,
         // and maxSize = size
     arrayListType(const arrayListType<elemType>& otherList);
@@ -108,7 +130,7 @@ public:
         //Deallocates the memory occupied by the array.
 protected:
     elemType *list; // array to hold the list elements
-    int length; // to store the length of teh lsit
+    int length; // to store the length of the list
     int maxSize; // to store the maximum size of the list
 };
 
@@ -135,6 +157,73 @@ int arrayListType<elemType>::maxListSize() const
 {
     return maxSize;
 }
+
+template <class elemType>
+void arrayListType<elemType>::increaseSize(const elemType& increaseBy)
+{
+    maxSize = maxSize + increaseBy;
+}
+
+
+template <class elemType>
+void arrayListType<elemType>::printContact(int loc) const
+{
+    cout << "+===================================================+" << endl;
+    cout << "Name\t\t: " << list[loc].getName() << endl;
+    cout << "Gender\t\t: " << list[loc].getGender()<<endl;
+    cout << "Email\t\t: " << list[loc].getAddress() << endl;
+    cout << "Address\t\t: " << list[loc].getEmail() << endl;
+    cout << "Phone Number\t: " << list[loc].getPhonenum() << endl;
+
+}// end printContact()
+
+template <class elemType>
+void arrayListType<elemType>::printAll() const
+{
+    for (int i = 0; i < length; i++){
+        cout << "+===================================================+" << endl;
+        cout << "Name\t\t: " << list[i].getName() << endl;
+        cout << "Gender\t\t: " << list[i].getGender()<<endl;
+        cout << "Email\t\t: " << list[i].getAddress() << endl;
+        cout << "Address\t\t: " << list[i].getEmail() << endl;
+        cout << "Phone Number\t: " << list[i].getPhonenum() << endl;
+    }
+
+}// end printAll()
+
+template <class elemType>
+int arrayListType<elemType>::contactSearch(string name) const
+{
+    int loc;
+    bool found = false;
+    for (loc = 0; loc < length; loc++)
+        if (list[loc].getName() == name)
+        {
+            found = true;
+            break;
+        }
+    if (found)
+        return loc;
+    else
+        return -1;
+} //end contactSearch
+
+template <class elemType>
+void arrayListType<elemType>::removeContact
+(string name)
+{
+    int loc;
+    loc = contactSearch(name);
+    if (loc != -1){
+        removeAt(loc);
+        cout << endl;
+        cout << "You've successfully deleted " << name << " from the contact book." << endl;
+    }else{
+        cout << endl;
+        cout << "The contact to be deleted is not in the list." << endl;
+    }
+
+}//end removeContact
 
 template <class elemType>
 void arrayListType<elemType>::print() const
